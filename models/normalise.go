@@ -10,14 +10,11 @@ type nonNormalizedNo struct{
 	PhoneNumber string `gorm:"column:phone_number"`
 }
 
-func GetNonNormalized(db *gorm.DB ){
+func GetNonNormalized(db *gorm.DB )*[]nonNormalizedNo{
 	numbers:=[]nonNormalizedNo{}
 	fmt.Println("here")
-	err:=db.Debug().Find(&numbers)
-	if err!=nil{
-		fmt.Println(err)
-	}
+	db.Debug().Find(&numbers)
 	db.SingularTable(true)
-
 	fmt.Println(numbers)
+	return &numbers
 }
