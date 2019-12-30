@@ -11,7 +11,7 @@ type nonNormalizedNo struct{
 }
 
 func GetNonNormalized(db *gorm.DB ){
-	numbers:=nonNormalizedNo{}
+	numbers:=[]nonNormalizedNo{}
 	fmt.Println("here")
 	err:=db.Debug().Find(&numbers)
 	if err!=nil{

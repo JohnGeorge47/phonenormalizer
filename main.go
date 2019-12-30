@@ -2,9 +2,9 @@ package main
 
 import (
 	"fmt"
+	"github.com/JohnGeorge47/phonenormalizer/models"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
-	"github.com/JohnGeorge47/phonenormalizer/models"
 )
 
 var db *gorm.DB
