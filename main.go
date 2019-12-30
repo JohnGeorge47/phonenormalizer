@@ -30,6 +30,9 @@ func ConnectToSql() (*gorm.DB, error) {
 func Normalize(db *gorm.DB){
 	nonnormalized:=models.GetNonNormalized(db)
 	if nonnormalized!=nil{
-		normalize.NormalizeNumber(nonnormalized)
+		arrayToInsert:=normalize.NormalizeNumber(nonnormalized)
+		models.InsertNormalized(db,arrayToInsert)
+	}else {
+		fmt.Println("No numbers in database")
 	}
 }

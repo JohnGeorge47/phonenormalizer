@@ -1,14 +1,14 @@
 package normalize
 
 import (
-	"github.com/JohnGeorge47/phonenormalizer/models"
 	"fmt"
+	"github.com/JohnGeorge47/phonenormalizer/models"
 	"regexp"
 	"sort"
 )
 
 func NormalizeNumber(numberStruct *[]models.NonNormalizedNo)[]string{
-	formatedArray:=make([]string,len(*numberStruct))
+	var formatedArray []string
 	re:=regexp.MustCompile("^[0-9]{10}$")
 	reg,_ := regexp.Compile("[^0-9]+")
     for _,num:=range *numberStruct{
@@ -22,9 +22,7 @@ func NormalizeNumber(numberStruct *[]models.NonNormalizedNo)[]string{
 			formatedArray=append(formatedArray,num.PhoneNumber)
 		}
 	}
-	fmt.Println(formatedArray)
 	arrayToinsert:=SortandRemoveDuplicates(formatedArray)
-	fmt.Println(arrayToinsert)
 	return arrayToinsert
 }
 
@@ -45,6 +43,7 @@ func Remove(s []string)[]string{
 		}
 	}
 	tmp[count+1]=s[length-1]
+	fmt.Println(tmp)
 	return tmp
 }
 
