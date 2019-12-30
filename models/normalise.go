@@ -5,13 +5,15 @@ import (
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
 )
-type NonNormailizedNo struct{
-	Id       int
-	PhoneNumber string
+type nonNormailizedNo struct{
+	ID       int		`gorm:"column:id"`
+	PhoneNumber string `gorm:"column:phone_number"`
 }
 
 func GetNonNormalized(db *gorm.DB ){
-	numbers:=[]NonNormailizedNo{}
-	db.Find(&numbers)
+	numbers:=nonNormailizedNo{}
+	db.First(&numbers)
+	db.SingularTable(true)
+
 	fmt.Println(numbers)
 }
