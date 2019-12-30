@@ -12,7 +12,7 @@ type nonNormailizedNo struct{
 
 func GetNonNormalized(db *gorm.DB ){
 	numbers:=nonNormailizedNo{}
-	db.First(&numbers)
+	db.Debug().Find(&numbers)
 	db.SingularTable(true)
 
 	fmt.Println(numbers)
